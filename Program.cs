@@ -73,8 +73,8 @@ internal sealed class ReminderContext : ApplicationContext
         {
             _trayIcon.ShowBalloonTip(
                 4_000,
-                "RemandMe calisiyor",
-                "20 dakikada bir ayaga kalkmani hatirlatacagim. Hemen test etmek icin ikona sag tikla.",
+                "RemandMe is running",
+                "I will remind you to stand up every 20 minutes. Right-click the icon to test it now.",
                 ToolTipIcon.Info);
         }
     }
@@ -104,14 +104,14 @@ internal sealed class ReminderContext : ApplicationContext
     private NotifyIcon BuildTrayIcon()
     {
         var menu = new ContextMenuStrip();
-        menu.Items.Add("Uyariyi simdi goster", null, (_, _) => ShowAlert());
-        menu.Items.Add("20 dakikayi yeniden baslat", null, (_, _) => ResetTimer());
-        menu.Items.Add("Windows baslangicindan kaldir", null, (_, _) => StartupManager.Uninstall());
-        menu.Items.Add("Cikis", null, (_, _) => ExitThread());
+        menu.Items.Add("Show reminder now", null, (_, _) => ShowAlert());
+        menu.Items.Add("Restart 20-minute timer", null, (_, _) => ResetTimer());
+        menu.Items.Add("Remove from Windows startup", null, (_, _) => StartupManager.Uninstall());
+        menu.Items.Add("Exit", null, (_, _) => ExitThread());
 
         return new NotifyIcon
         {
-            Text = "RemandMe - 20 dakikada bir kalk",
+            Text = "RemandMe - stand up every 20 minutes",
             Icon = PenguinIcon.Create(),
             ContextMenuStrip = menu
         };

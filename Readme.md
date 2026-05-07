@@ -1,55 +1,55 @@
 RemandMe
 ========
 
-Windows 11 icin cok kucuk bir ayaga kalk hatirlaticisi.
+RemandMe is a small Windows 11 stand-up reminder. It runs quietly in the system tray, starts with Windows by default, and shows a penguin reminder every 20 minutes so you can move, stretch, and drink water.
 
-Ne yapar?
+## What it does
 
-- Bilgisayar acilinca otomatik baslar.
-- Uyku modundan donunce 20 dakikalik sayaci yeniden baslatir.
-- Her 20 dakikada bir ekranin yaklasik %70 x %60'ini kaplayan penguenli uyari gosterir.
-- Sistem tepsisinde sessiz calisir.
+- Starts automatically when Windows starts.
+- Restarts the 20-minute timer after the computer wakes from sleep.
+- Shows a large penguin reminder every 20 minutes.
+- Runs from the system tray with quick actions.
 
-Calistirma
+## Run
 
 ```powershell
 dotnet run
 ```
 
-Test icin hemen uyari gostermek:
+Show the reminder immediately:
 
 ```powershell
 dotnet run -- --show-now
 ```
 
-Testte 20 dakika beklememek icin:
+Use a shorter interval for testing:
 
 ```powershell
 $env:REMANDME_INTERVAL_SECONDS='10'
 dotnet run
 ```
 
-Tek exe uretmek:
+## Build the exe
 
 ```powershell
 dotnet publish -c Release
 ```
 
-Exe su klasore gelir:
+The exe is created here:
 
 ```text
 bin\Release\net8.0-windows\win-x64\publish\RemandMe.exe
 ```
 
-Hazir kopyayi `dist\RemandMe` klasorune almak icin:
+Create a ready-to-share copy:
 
 ```powershell
 .\scripts\publish.ps1
 ```
 
-Bu klasorde `RemandMe.exe`, `Hemen Test Et.cmd` ve `Baslangictan Kaldir.cmd` olusur.
+This creates `RemandMe.exe`, `Test Now.cmd`, and `Remove From Startup.cmd` in `dist\RemandMe`.
 
-Baslangictan kaldirmak:
+Remove it from Windows startup:
 
 ```powershell
 dotnet run -- --uninstall-startup

@@ -1,16 +1,16 @@
-# Test Notlari
+# Testing Notes
 
-Hemen uyari ekranini gormek icin:
+Show the reminder immediately:
 
 ```powershell
 .\scripts\test-alert.ps1
 ```
 
-Kisa sureli zamanlayici testi icin:
+Use a short timer interval:
 
 ```powershell
 $env:REMANDME_INTERVAL_SECONDS='10'
 dotnet run -- --no-startup
 ```
 
-Test bittiginde sistem tepsisindeki penguen ikonuna sag tiklayip cikis secilebilir.
+When testing is finished, right-click the penguin icon in the system tray and choose Exit.

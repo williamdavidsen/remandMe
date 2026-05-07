@@ -76,8 +76,8 @@ internal sealed class AlertForm : Form
 
     private void BuildButtons()
     {
-        ConfigureButton(_okButton, "Tamam, kalkiyorum", Color.FromArgb(247, 196, 65));
-        ConfigureButton(_snoozeButton, "Bir tur daha", Color.FromArgb(236, 244, 248));
+        ConfigureButton(_okButton, "I'm up", Color.FromArgb(247, 196, 65));
+        ConfigureButton(_snoozeButton, "One more round", Color.FromArgb(236, 244, 248));
 
         _okButton.Click += (_, _) => Close();
         _snoozeButton.Click += (_, _) => Close();
@@ -192,13 +192,13 @@ internal sealed class AlertForm : Form
             Trimming = StringTrimming.Word
         };
 
-        g.DrawString("20 dakika doldu!", titleFont, titleBrush, titleRect, titleFormat);
-        g.DrawString("Ayaga kalk, omuzlarini gevset, bir bardak su ic. Sandalye seni ozledi ama belin bu iliskiyi onaylamiyor.", bodyFont, bodyBrush, textRect, bodyFormat);
+        g.DrawString("20 minutes are up!", titleFont, titleBrush, titleRect, titleFormat);
+        g.DrawString("Stand up, relax your shoulders, and drink a glass of water. Your chair misses you, but your back did not approve this relationship.", bodyFont, bodyBrush, textRect, bodyFormat);
 
         using var bubblePath = RoundedRect(bubbleRect, 22);
         g.FillPath(bubbleFill, bubblePath);
         g.DrawPath(bubbleBorder, bubblePath);
-        g.DrawString("Penguen raporu: hareket yoksa buz pistinde kayma yok.", smallFont, bodyBrush, Rectangle.Inflate(bubbleRect, -20, -13), bodyFormat);
+        g.DrawString("Penguin report: no movement means no glide on the ice.", smallFont, bodyBrush, Rectangle.Inflate(bubbleRect, -20, -13), bodyFormat);
     }
 
     private void DrawPenguin(Graphics g)
@@ -288,7 +288,7 @@ internal sealed class AlertForm : Form
         var sign = new RectangleF(x + size * 0.46f, y + size * 0.01f, size * 0.34f, size * 0.14f);
         using var signPath = RoundedRect(Rectangle.Round(sign), 9);
         g.FillPath(yellow, signPath);
-        g.DrawString("KALK!", signFont, signBrush, sign, new StringFormat
+        g.DrawString("UP!", signFont, signBrush, sign, new StringFormat
         {
             Alignment = StringAlignment.Center,
             LineAlignment = StringAlignment.Center
