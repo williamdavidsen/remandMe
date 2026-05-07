@@ -41,6 +41,14 @@ Exe su klasore gelir:
 bin\Release\net8.0-windows\win-x64\publish\RemandMe.exe
 ```
 
+Hazir kopyayi `dist\RemandMe` klasorune almak icin:
+
+```powershell
+.\scripts\publish.ps1
+```
+
+Bu klasorde `RemandMe.exe`, `Hemen Test Et.cmd` ve `Baslangictan Kaldir.cmd` olusur.
+
 Baslangictan kaldirmak:
 
 ```powershell

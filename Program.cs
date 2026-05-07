@@ -4,6 +4,8 @@ namespace RemandMe;
 
 internal static class Program
 {
+    private const string MutexName = @"Local\RemandMe.SingleInstance";
+
     [STAThread]
     private static void Main(string[] args)
     {
@@ -23,6 +25,14 @@ internal static class Program
 
         var installStartup = !args.Contains("--no-startup", StringComparer.OrdinalIgnoreCase);
         var showImmediately = args.Contains("--show-now", StringComparer.OrdinalIgnoreCase);
+
+        using var mutex = new Mutex(initiallyOwned: true, MutexName, out var isFirstInstance);
+        if (!isFirstInstance)
+        {
+            using var alert = new AlertForm();
+            alert.ShowDialog();
+            return;
+        }
 
         Application.Run(new ReminderContext(installStartup, showImmediately));
     }
@@ -58,6 +68,14 @@ internal sealed class ReminderContext : ApplicationContext
         if (showImmediately)
         {
             ShowAlert();
+        }
+        else
+        {
+            _trayIcon.ShowBalloonTip(
+                4_000,
+                "RemandMe calisiyor",
+                "20 dakikada bir ayaga kalkmani hatirlatacagim. Hemen test etmek icin ikona sag tikla.",
+                ToolTipIcon.Info);
         }
     }
 
