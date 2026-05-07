@@ -1,4 +1,5 @@
-RemandMe
+ReminderApp
+
 ========
 
 RemandMe is a small Windows 11 stand-up reminder. It runs quietly in the system tray, starts with Windows by default, and shows a penguin reminder every 20 minutes so you can move, stretch, and drink water.
